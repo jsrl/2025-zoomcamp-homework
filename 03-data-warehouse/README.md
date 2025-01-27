@@ -79,10 +79,18 @@ WHERE
 
 ## Question 4:
 What is the best strategy to make an optimized table in Big Query if your query will always order the results by PUlocationID and filter based on lpep_pickup_datetime? (Create a new table with this strategy)
+
 - Cluster on lpep_pickup_datetime Partition by PUlocationID
-- Partition by lpep_pickup_datetime  Cluster on PUlocationID
+- **Partition by lpep_pickup_datetime  Cluster on PUlocationID <-**
 - Partition by lpep_pickup_datetime and Partition by PUlocationID
 - Cluster on by lpep_pickup_datetime and Cluster on PUlocationID
+
+```sql
+CREATE OR REPLACE TABLE taxis_dataset.green_tripdata_partitoned_clustered
+PARTITION BY DATE(lpep_pickup_datetime)
+CLUSTER BY PUlocationID AS
+SELECT * FROM taxis_dataset.external_green_tripdata;
+```
 
 ## Question 5:
 Write a query to retrieve the distinct PULocationID between lpep_pickup_datetime
