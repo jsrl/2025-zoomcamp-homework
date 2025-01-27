@@ -78,7 +78,7 @@ Choose the answer which most closely matches.</br>
 Where is the data stored in the External Table you created?
 
 - Big Query
-- ** GCP Bucket <- **
+- **GCP Bucket<-**
 - Big Table
 - Container Registry
 
