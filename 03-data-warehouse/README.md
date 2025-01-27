@@ -8,13 +8,31 @@ Stop with loading the files into a bucket. </br></br>
 
 <b>SETUP:</b></br>
 Create an external table using the Green Taxi Trip Records Data for 2022. </br>
+
+```sql
+-- Creating external table referring to gcs path
+CREATE OR REPLACE EXTERNAL TABLE `project_id.taxis_dataset.external_green_tripdata`
+OPTIONS (
+  format = 'PARQUET',
+  uris = ['gs://taxis-bucket-448121-i4/taxi_parquet/green_tripdata_2022-*.parquet']
+);
+```
+
 Create a table in BQ using the Green Taxi Trip Records for 2022 (do not partition or cluster this table). </br>
 </p>
+
+```sql
+-- Create a non partitioned table from external table
+CREATE OR REPLACE TABLE taxis_dataset.green_tripdata_non_partitoned AS
+SELECT * FROM taxis_dataset.external_green_tripdata;
+```
+
+
 
 ## Question 1:
 Question 1: What is count of records for the 2022 Green Taxi Data??
 - 65,623,481
-- 840,402
+- **840,402 <-**
 - 1,936,423
 - 253,647
 
