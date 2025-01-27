@@ -100,8 +100,18 @@ Use the materialized table you created earlier in your from clause and note the 
 
 Choose the answer which most closely matches.</br> 
 
+```sql
+-- materialized table
+SELECT DISTINCT PULocationID FROM  taxis_dataset.green_tripdata_non_partitoned
+WHERE lpep_pickup_datetime BETWEEN '2022-06-01' AND '2022-06-30';
+
+-- clustered partitioned table
+SELECT DISTINCT PULocationID FROM taxis_dataset.green_tripdata_partitoned_clustered
+WHERE lpep_pickup_datetime BETWEEN '2022-06-01' AND '2022-06-30';
+```
+
 - 22.82 MB for non-partitioned table and 647.87 MB for the partitioned table
-- 12.82 MB for non-partitioned table and 1.12 MB for the partitioned table
+- **12.82 MB for non-partitioned table and 1.12 MB for the partitioned table <-**
 - 5.63 MB for non-partitioned table and 0 MB for the partitioned table
 - 10.31 MB for non-partitioned table and 10.31 MB for the partitioned table
 
