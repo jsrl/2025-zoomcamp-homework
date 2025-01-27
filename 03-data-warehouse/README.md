@@ -144,7 +144,7 @@ No Points: Write a `SELECT count(*)` query FROM the materialized table you creat
 ```sql
 SELECT COUNT(*) FROM taxis_dataset.green_tripdata_non_partitoned;
 ```
-0 bytes.
+0 bytes because results were cached.
 
  
 ## Submitting the solutions
