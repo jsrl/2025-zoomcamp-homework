@@ -141,6 +141,10 @@ When is Clustering Not Necessary?
 
 ## (Bonus: Not worth points) Question 8:
 No Points: Write a `SELECT count(*)` query FROM the materialized table you created. How many bytes does it estimate will be read? Why?
+```sql
+SELECT COUNT(*) FROM taxis_dataset.green_tripdata_non_partitoned;
+```
+0 bytes.
 
  
 ## Submitting the solutions
