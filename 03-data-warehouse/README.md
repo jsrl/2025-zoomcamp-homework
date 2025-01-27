@@ -62,10 +62,20 @@ FROM
 
 ## Question 3:
 How many records have a fare_amount of 0?
+
+```sql
+SELECT
+  COUNT(*) AS zero_fare_records
+FROM
+  taxis_dataset.green_tripdata_non_partitoned
+WHERE
+  fare_amount = 0;
+```
+
 - 12,488
 - 128,219
 - 112
-- 1,622
+- **1,622 <-**
 
 ## Question 4:
 What is the best strategy to make an optimized table in Big Query if your query will always order the results by PUlocationID and filter based on lpep_pickup_datetime? (Create a new table with this strategy)
