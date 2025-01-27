@@ -90,15 +90,10 @@ It is best practice in Big Query to always cluster your data:
 
 ```
 When is Clustering Not Necessary?
-Clustering is not always required in the following cases:
-
-Small Tables: For small tables, the performance gains from clustering may be negligible.
-
-Infrequent Queries: If the table is rarely queried, the overhead of maintaining clustered data may not be justified.
-
-Non-Filtered Queries: If your queries do not filter on specific columns, clustering may not provide any benefit.
-
-High Write Workloads: Clustering can increase the cost of write operations (e.g., INSERT, UPDATE, DELETE) because BigQuery needs to reorganize the data.
+* Small Tables: For small tables, the performance gains from clustering may be negligible.
+* Infrequent Queries: If the table is rarely queried, the overhead of maintaining clustered data may not be justified.
+* Non-Filtered Queries: If your queries do not filter on specific columns, clustering may not provide any benefit.
+* High Write Workloads: Clustering can increase the cost of write operations (e.g., INSERT, UPDATE, DELETE) because BigQuery needs to reorganize the data.
 ```
 
 
