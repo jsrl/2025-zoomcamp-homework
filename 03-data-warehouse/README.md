@@ -39,7 +39,7 @@ SELECT * FROM homework3.external_yellow_2024;
 Question 1: What is count of records for the 2024 Yellow Taxi Data?
 - 65,623
 - 840,402
-- 20,332,093
+- **20,332,093 <-**
 - 85,431,289
 
 
@@ -47,13 +47,28 @@ Question 1: What is count of records for the 2024 Yellow Taxi Data?
 Write a query to count the distinct number of PULocationIDs for the entire dataset on both the tables.</br> 
 What is the **estimated amount** of data that will be read when this query is executed on the External Table and the Table?
 
+```sql
+-- For External Table
+SELECT
+  COUNT(DISTINCT PULocationID)
+FROM
+  homework3.external_yellow_2024;
+
+-- For Materialized  Table
+SELECT
+  COUNT(DISTINCT PULocationID) 
+FROM
+  homework3.yellow_2024_non_partitoned;
+```
 - 18.82 MB for the External Table and 47.60 MB for the Materialized Table
-- 0 MB for the External Table and 155.12 MB for the Materialized Table
+- ** 0 MB for the External Table and 155.12 MB for the Materialized Table <-**
 - 2.14 GB for the External Table and 0MB for the Materialized Table
 - 0 MB for the External Table and 0MB for the Materialized Table
 
 ## Question 3:
 Write a query to retrieve the PULocationID from the table (not the external table) in BigQuery. Now write a query to retrieve the PULocationID and DOLocationID on the same table. Why are the estimated number of Bytes different?
+
+
 - BigQuery is a columnar database, and it only scans the specific columns requested in the query. Querying two columns (PULocationID, DOLocationID) requires 
 reading more data than querying one column (PULocationID), leading to a higher estimated number of bytes processed.
 - BigQuery duplicates data across multiple storage partitions, so selecting two columns instead of one requires scanning the table twice, 
@@ -63,10 +78,18 @@ doubling the estimated bytes processed.
 
 ## Question 4:
 How many records have a fare_amount of 0?
+```sql
+SELECT
+  COUNT(*) AS zero_fare_records
+FROM
+  homework3.yellow_2024_non_partitoned
+WHERE
+  fare_amount = 0;
+```
 - 128,210
 - 546,578
 - 20,188,016
-- 8,333
+- **8,333 <-**
 
 ## Question 5:
 What is the best strategy to make an optimized table in Big Query if your query will always filter based on tpep_dropoff_datetime and order the results by VendorID (Create a new table with this strategy)
