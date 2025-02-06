@@ -93,11 +93,17 @@ WHERE
 
 ## Question 5:
 What is the best strategy to make an optimized table in Big Query if your query will always filter based on tpep_dropoff_datetime and order the results by VendorID (Create a new table with this strategy)
-- Partition by tpep_dropoff_datetime and Cluster on VendorID
+- **Partition by tpep_dropoff_datetime and Cluster on VendorID <-**
 - Cluster on by tpep_dropoff_datetime and Cluster on VendorID
 - Cluster on tpep_dropoff_datetime Partition by VendorID
 - Partition by tpep_dropoff_datetime and Partition by VendorID
 
+```sql
+CREATE OR REPLACE TABLE homework3.yellow_2024_partitoned_clustered
+PARTITION BY DATE(tpep_dropoff_datetime)
+CLUSTER BY VendorID AS
+SELECT * FROM homework3.external_yellow_2024;
+```
 
 ## Question 6:
 Write a query to retrieve the distinct VendorIDs between tpep_dropoff_datetime
