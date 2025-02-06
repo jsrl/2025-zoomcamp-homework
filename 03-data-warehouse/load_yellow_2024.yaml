@@ -5,7 +5,7 @@ description: |
 
 variables:
   file: "yellow_tripdata_2024-{{trigger.date | date('MM')}}.parquet"
-  gcs_file: "gs://{{kv('GCP_BUCKET_NAME')}}/taxi_parquet/{{vars.file}}"
+  gcs_file: "gs://{{kv('GCP_BUCKET_NAME')}}/yellow_2024/{{vars.file}}"
   url: "https://d37ci6vzurychx.cloudfront.net/trip-data/{{vars.file}}"
 
 tasks:
