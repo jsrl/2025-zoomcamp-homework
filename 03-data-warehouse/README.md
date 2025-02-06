@@ -113,8 +113,18 @@ Use the materialized table you created earlier in your from clause and note the 
 
 Choose the answer which most closely matches.</br> 
 
+```sql
+-- materialized table
+SELECT DISTINCT VendorID FROM  homework3.yellow_2024_non_partitoned
+WHERE tpep_dropoff_datetime BETWEEN '2024-03-01' AND '2024-03-15';
+
+-- clustered partitioned table
+SELECT DISTINCT VendorID FROM homework3.yellow_2024_partitoned_clustered
+WHERE tpep_dropoff_datetime BETWEEN '2024-03-01' AND '2024-03-15';
+```
+
 - 12.47 MB for non-partitioned table and 326.42 MB for the partitioned table
-- 310.24 MB for non-partitioned table and 26.84 MB for the partitioned table
+- **310.24 MB for non-partitioned table and 26.84 MB for the partitioned table <-**
 - 5.87 MB for non-partitioned table and 0 MB for the partitioned table
 - 310.31 MB for non-partitioned table and 285.64 MB for the partitioned table
 
@@ -124,13 +134,13 @@ Where is the data stored in the External Table you created?
 
 - Big Query
 - Container Registry
-- GCP Bucket
+- **GCP Bucket <-**
 - Big Table
 
 ## Question 8:
 It is best practice in Big Query to always cluster your data:
 - True
-- False
+- **False <-**
 
 
 ## (Bonus: Not worth points) Question 9:
