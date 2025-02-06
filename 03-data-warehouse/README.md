@@ -145,7 +145,10 @@ It is best practice in Big Query to always cluster your data:
 
 ## (Bonus: Not worth points) Question 9:
 No Points: Write a `SELECT count(*)` query FROM the materialized table you created. How many bytes does it estimate will be read? Why?
-
+```sql
+SELECT COUNT(*) FROM homework3.yellow_2024_non_partitoned;
+```
+0 bytes because the results were cached.
 
 ## Submitting the solutions
 
