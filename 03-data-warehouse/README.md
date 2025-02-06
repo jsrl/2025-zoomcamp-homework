@@ -61,7 +61,7 @@ FROM
   homework3.yellow_2024_non_partitoned;
 ```
 - 18.82 MB for the External Table and 47.60 MB for the Materialized Table
-- ** 0 MB for the External Table and 155.12 MB for the Materialized Table <-**
+- **0 MB for the External Table and 155.12 MB for the Materialized Table<-**
 - 2.14 GB for the External Table and 0MB for the Materialized Table
 - 0 MB for the External Table and 0MB for the Materialized Table
 
