@@ -14,7 +14,25 @@ Nothing is fool proof so make sure that all 6 files show in your GCS Bucket befo
 
 <b>BIG QUERY SETUP:</b></br>
 Create an external table using the Yellow Taxi Trip Records. </br>
-Create a (regular/materialized) table in BQ using the Yellow Taxi Trip Records (do not partition or cluster this table). </br>
+
+```sql
+-- Create an external table using the Yellow Taxi Trip Records. Creating external table referring to gcs path
+CREATE OR REPLACE EXTERNAL TABLE `homework3.external_yellow_2024`
+OPTIONS (
+  format = 'PARQUET',
+  uris = ['gs://taxis-bucket-448121-i4/yellow_2024/yellow_tripdata_2024-*.parquet']
+);
+```
+
+Create a (regular/materialized) table in BQ using the Yellow Taxi Trip Records (do not partition or cluster this table). 
+
+```sql
+-- Create a (regular/materialized) table in BQ using the Yellow Taxi Trip Records (do not partition or cluster this table).
+-- Create a non partitioned table from external table
+CREATE OR REPLACE TABLE homework3.yellow_2024_non_partitoned AS
+SELECT * FROM homework3.external_yellow_2024;
+```
+</br>
 </p>
 
 ## Question 1:
