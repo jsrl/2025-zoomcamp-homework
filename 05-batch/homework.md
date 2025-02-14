@@ -61,7 +61,17 @@ Consider only trips that started on the 15th of October.
 - 108,164
 - 12,856
 - 452,470
-- 62,610
+- **62,610 <-**
+
+```python
+fhv_parquet_df.createOrReplaceTempView('homework5')
+#Question 3
+spark.sql("""
+SELECT COUNT(*)
+FROM homework5
+WHERE cast(pickup_datetime as date) = '2019-10-15'
+""").show()
+```
 
 > [!IMPORTANT]
 > Be aware of columns order when defining schema
@@ -72,12 +82,21 @@ Consider only trips that started on the 15th of October.
 
 What is the length of the longest trip in the dataset in hours?
 
-- 631,152.50 Hours
+- **631,152.50 Hours <-** 
 - 243.44 Hours
 - 7.68 Hours
 - 3.32 Hours
 
-
+```python
+#Question 4
+spark.sql("""
+SELECT pickup_datetime
+,dropOff_datetime
+,(unix_timestamp(dropOff_datetime) - unix_timestamp(pickup_datetime)) /3600 as hours
+FROM homework5
+ORDER BY hours desc
+""").show()
+```
 
 ### Question 5: 
 
@@ -87,9 +106,8 @@ Spark’s User Interface which shows the application's dashboard runs on which l
 
 - 80
 - 443
-- 4040
+- **4040 <-**
 - 8080
-
 
 
 ### Question 6: 
@@ -102,9 +120,22 @@ Load the zone lookup data into a temp view in Spark</br>
 Using the zone lookup data and the FHV October 2019 data, what is the name of the LEAST frequent pickup location Zone?</br>
 
 - East Chelsea
-- Jamaica Bay
+- **Jamaica Bay <-**
 - Union Sq
 - Crown Heights North
+
+```python
+spark.sql("""
+SELECT count(*) as cnt
+,PUlocationID
+,Borough
+,zone
+FROM homework5 inner join lookup
+on PUlocationID = LocationID
+GROUP BY PUlocationID, Borough, zone
+ORDER BY cnt asc
+""").show()
+```
 
 
 ## Submitting the solutions
