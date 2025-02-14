@@ -16,3 +16,5 @@ Repo for the [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-e
 [Workshop: dlt](workshop-dlt/README.md)
 
 [Module 4: Analytics Engineering](04-analytics-engineering/README.md)
+
+[Module 5: Batch](05-batch/README.md)
