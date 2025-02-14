@@ -33,11 +33,22 @@ Repartition the Dataframe to 6 partitions and save it to parquet.
 What is the average size of the Parquet (ending with .parquet extension) Files that were created (in MB)? Select the answer which most closely matches.
 
 - 1MB
-- 6MB
+- **6MB <-**
 - 25MB
 - 87MB
 
-
+```python
+fhv_spark_df.repartition(6).write.parquet('/home/jsrl/notebooks/data/pq/hw5/')
+!ls -lh /home/jsrl/notebooks/data/pq/hw5/
+total 39M
+-rw-r--r-- 1 jsrl jsrl    0 Feb 14 19:49 _SUCCESS
+-rw-r--r-- 1 jsrl jsrl 6.4M Feb 14 19:49 part-00000-ed96f45d-0669-41de-a972-4f99dd019ec6-c000.snappy.parquet
+-rw-r--r-- 1 jsrl jsrl 6.4M Feb 14 19:49 part-00001-ed96f45d-0669-41de-a972-4f99dd019ec6-c000.snappy.parquet
+-rw-r--r-- 1 jsrl jsrl 6.4M Feb 14 19:49 part-00002-ed96f45d-0669-41de-a972-4f99dd019ec6-c000.snappy.parquet
+-rw-r--r-- 1 jsrl jsrl 6.4M Feb 14 19:49 part-00003-ed96f45d-0669-41de-a972-4f99dd019ec6-c000.snappy.parquet
+-rw-r--r-- 1 jsrl jsrl 6.4M Feb 14 19:49 part-00004-ed96f45d-0669-41de-a972-4f99dd019ec6-c000.snappy.parquet
+-rw-r--r-- 1 jsrl jsrl 6.4M Feb 14 19:49 part-00005-ed96f45d-0669-41de-a972-4f99dd019ec6-c000.snappy.parquet
+```
 
 ### Question 3: 
 
