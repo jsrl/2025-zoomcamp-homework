@@ -132,7 +132,7 @@ Alright, in module 1, you had a SQL refresher, so now let's build on top of that
 These are not meant to be easy - but they'll boost your SQL and Analytics skills to the next level.  
 So, without any further do, let's get started...
 
-You might want to add some new dimensions `year` (e.g.: 2019, 2020), `quarter` (1, 2, 3, 4), `year_quarter` (e.g.: `2019/Q1`, `2019-Q2`), and `month` (e.g.: 1, 2, ..., 12) to your `fct_taxi_trips` OR `dim_taxi_trips.sql` models to facilitate filtering your queries
+You might want to add some new dimensions `year` (e.g.: 2019, 2020), `quarter` (1, 2, 3, 4), `year_quarter` (e.g.: `2019/Q1`, `2019-Q2`), and `month` (e.g.: 1, 2, ..., 12), **extracted from pickup_datetime**, to your `fct_taxi_trips` OR `dim_taxi_trips.sql` models to facilitate filtering your queries
 
 
 ### Quarter 5: Taxi Quarterly Revenue Growth
@@ -177,7 +177,7 @@ Prerequisites:
 Now...
 1. Create a new model `fct_fhv_monthly_zone_traveltime_p90.sql`
 2. For each record in `dim_fhv_trips.sql`, compute the [timediff](https://cloud.google.com/bigquery/docs/reference/standard-sql/time_functions#time_diff), in seconds between dropoff_datetime and pickup_datetime - we'll call it `trip_duration` for this exercise
-3. Compute the **continous** `p90` of `trip_duration` partitioning by year, month, and pickup_location
+3. Compute the **continous** `p90` of `trip_duration` partitioning by year, month, pickup_location_id, and dropoff_location_id
 
 For the Trips that **respectively** started from `Newark Airport`, `SoHo`, and `Yorkville East`, in November 2019, what are **dropoff_zones** with the 2nd longest p90 trip_duration ?
 
