@@ -64,6 +64,20 @@ Consider only trips that started on the 15th of October.
 - 125,567
 - 145,567
 
+```sh
+  trip_count = spark.sql("""
+    SELECT COUNT(*) AS trip_count
+    FROM homework2025
+    WHERE tpep_pickup_datetime BETWEEN '2024-10-15 00:00:00' AND '2024-10-15 23:59:59'
+""")
+
+trip_count.show()
++----------+
+|trip_count|
++----------+
+|    128893|
++----------+
+```
 
 ## Question 4: Longest trip
 
