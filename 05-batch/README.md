@@ -21,8 +21,14 @@ What's the output?
 > [!NOTE]
 > To install PySpark follow this [guide](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/05-batch/setup/pyspark.md)
 
+```sh
+spark = SparkSession.builder \
+    .master("local[*]") \
+    .appName('test') \
+    .getOrCreate()
+    
 **'3.5.4'<-**
-
+```
 ## Question 2: Yellow October 2024
 
 Read the October 2024 Yellow into a Spark Dataframe.
@@ -32,11 +38,21 @@ Repartition the Dataframe to 4 partitions and save it to parquet.
 What is the average size of the Parquet (ending with .parquet extension) Files that were created (in MB)? Select the answer which most closely matches.
 
 - 6MB
-- 25MB
+**- 25MB <-**
 - 75MB
 - 100MB
 
+```sh
+df = spark.read.parquet("yellow_tripdata_2024-10.parquet").repartition(4)
+df.write.mode("overwrite").parquet("homework2025/")
+!du -sh homework2025/*
 
+0	homework2025/_SUCCESS
+23M	homework2025/part-00000-12af7407-9f42-4d4d-9a9a-7052f7b6655c-c000.snappy.parquet
+23M	homework2025/part-00001-12af7407-9f42-4d4d-9a9a-7052f7b6655c-c000.snappy.parquet
+23M	homework2025/part-00002-12af7407-9f42-4d4d-9a9a-7052f7b6655c-c000.snappy.parquet
+23M	homework2025/part-00003-12af7407-9f42-4d4d-9a9a-7052f7b6655c-c000.snappy.parquet
+```
 ## Question 3: Count records 
 
 How many taxi trips were there on the 15th of October?
