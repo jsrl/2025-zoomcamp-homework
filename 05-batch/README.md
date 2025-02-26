@@ -38,7 +38,7 @@ Repartition the Dataframe to 4 partitions and save it to parquet.
 What is the average size of the Parquet (ending with .parquet extension) Files that were created (in MB)? Select the answer which most closely matches.
 
 - 6MB  
-**- 25MB <-**
+- **25MB<-**
 - 75MB
 - 100MB
 
@@ -85,9 +85,22 @@ What is the length of the longest trip in the dataset in hours?
 
 - 122
 - 142
-- 162
+- **162 <-**
 - 182
-
+  
+```sh
+spark.sql("""
+SELECT tpep_pickup_datetime
+,tpep_dropoff_datetime
+,(unix_timestamp(tpep_dropoff_datetime) - unix_timestamp(tpep_pickup_datetime)) /3600 as hours
+FROM homework2025
+ORDER BY hours desc
+""").show()
++--------------------+---------------------+------------------+
+|tpep_pickup_datetime|tpep_dropoff_datetime|             hours|
++--------------------+---------------------+------------------+
+| 2024-10-16 13:03:49|  2024-10-23 07:40:53|162.61777777777777|
+```
 
 ## Question 5: User Interface
 
