@@ -72,6 +72,18 @@ Find out what you need to execute based on the `help` output.
 
 What's the version, based on the output of the command you executed? (copy the entire version)
 
+```sh
+docker exec -it redpanda-1 rpk version
+Version:     v24.2.18
+Git ref:     f9a22d4430
+Build date:  2025-02-14T12:59:41Z
+OS/Arch:     linux/arm64
+Go version:  go1.23.1
+
+Redpanda Cluster
+  node-1  v24.2.18 - f9a22d443087b824803638623d6b7492ec8221f9
+```
+v24.2.18
 
 ## Question 2. Creating a topic
 
@@ -83,6 +95,12 @@ redpandas.
 Read the output of `help` and based on it, create a topic with name `green-trips` 
 
 What's the output of the command for creating a topic? Include the entire output in your answer.
+
+```sh
+docker exec -it redpanda-1 rpk topic create green-trips   
+TOPIC        STATUS
+green-trips  OK
+```
 
 
 ## Question 3. Connecting to the Kafka server
@@ -122,6 +140,24 @@ producer.bootstrap_connected()
 
 Provided that you can connect to the server, what's the output
 of the last command?
+
+```python
+import json
+from kafka import KafkaProducer
+
+def json_serializer(data):
+    return json.dumps(data).encode('utf-8')
+
+server = 'localhost:9092'
+
+producer = KafkaProducer(
+    bootstrap_servers=[server],
+    value_serializer=json_serializer
+)
+
+producer.bootstrap_connected()
+```
+True
 
 ## Question 4: Sending the Trip Data
 
@@ -166,6 +202,10 @@ took = t1 - t0
 ```
 
 How much time did it take to send the entire dataset and flush? 
+
+```sh
+25.5 s
+```
 
 
 ## Question 5: Build a Sessionization Window (2 points)
